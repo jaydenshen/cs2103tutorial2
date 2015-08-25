@@ -5,6 +5,7 @@
  * write non-OO code using an OO language.
  * ====================================================================
  */
+// added some useless comment
 
 import java.util.Scanner;
 /**
