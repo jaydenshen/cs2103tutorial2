@@ -5,7 +5,6 @@
  * write non-OO code using an OO language.
  * ====================================================================
  */
-// added some useless comment
 
 import java.util.Scanner;
 /**
@@ -100,6 +99,10 @@ public class CityConnect {
 	 */
 	public static void main(String[] args) {
 		showToUser(WELCOME_MESSAGE);
+		enterCommand();
+	}
+	//continue to get prompt the user to enter command 
+	private static void enterCommand() {
 		while (true) {
 			System.out.print("Enter command:");
 			String command = scanner.nextLine();
@@ -129,6 +132,17 @@ public class CityConnect {
 
 		COMMAND_TYPE commandType = determineCommandType(commandTypeString);
 
+		return returnExecuteCommand(userCommand, commandType);
+		/*
+		 * ==============NOTE TO STUDENTS======================================
+		 * If the rest of the program is correct, this error will never be thrown.
+		 * That is why we use an Error instead of an Exception.
+		 * ====================================================================
+		 */
+	}
+	//will return executeCommand depends on which cases
+	private static String returnExecuteCommand(String userCommand,
+			COMMAND_TYPE commandType) throws Error {
 		switch (commandType) {
 		case ADD_ROUTE:
 			return addRoute(userCommand);
@@ -142,12 +156,6 @@ public class CityConnect {
 			//throw an error if the command is not recognized
 			throw new Error("Unrecognized command type");
 		}
-		/*
-		 * ==============NOTE TO STUDENTS======================================
-		 * If the rest of the program is correct, this error will never be thrown.
-		 * That is why we use an Error instead of an Exception.
-		 * ====================================================================
-		 */
 	}
 
 	/*
@@ -195,6 +203,7 @@ public class CityConnect {
 		if (parameters.length < PARAM_SIZE_FOR_GET_DISTANCE) {
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 		}
+		
 
 		String newStartLocation = parameters[PARAM_POSITION_START_LOCATION];
 		String newEndLocation = parameters[PARAM_POSITION_END_LOCATION];
